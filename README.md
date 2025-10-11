@@ -1,6 +1,6 @@
-🫁 Lungs Pneumonia Detection and Localization using Deep Learning
+#🫁 Lungs Pneumonia Detection and Localization using Deep Learning
 
-🚀 Project Overview
+##🚀 Project Overview
 
 This project applies Deep Learning and High-Performance Computing (HPC) to detect and localize pneumonia in chest X-ray (CXR) images.
 It leverages Convolutional Neural Networks (CNNs) for classification and YOLOv8 for bounding-box localization, trained in both serial and parallel environments using multi-core CPUs and multi-GPU clusters.
@@ -11,65 +11,54 @@ Our work demonstrates how parallel computing accelerates AI model training while
 > (Open OnDemand environment).  
 > Some `!pip`, `%%writefile`, and environment setup cells are included intentionally
 > to handle missing packages and cluster-specific initialization.  
-> These are not errors — they are part of the reproducibility steps for running on HPC.
+> These are not errors they are part of the reproducibility steps for running on HPC.
 
 
-🎯 Objectives
+##🎯 Objectives
 
 Develop a robust deep learning pipeline to classify and localize pneumonia.
-
 Implement and benchmark serial vs. parallel training using:
-
 CPU parallelism via PyTorch DistributedDataParallel (DDP)
-
 GPU parallelism via DDP and Fully Sharded Data Parallel (FSDP)
 
 Evaluate the impact of HPC scaling on:
 
 Training speed and throughput
-
 Model accuracy, precision, recall, and mAP
-
 Resource efficiency across CPUs and GPUs
 
-🧠 Methodology
+##🧠 Methodology
+
 1. Dataset
 
 RSNA Pneumonia Detection Challenge dataset – 30,000+ expert-annotated chest X-rays.
-
 Balanced classes (~12,000 total images) after validation and cleaning.
 
 Preprocessing:
 
 Image resizing (128×128 or 416×416 for YOLO)
-
 Normalization and data augmentation (flips, brightness, gamma, noise)
-
 Parallel metadata loading using Dask
 
 2. Environment
 
 Executed on an HPC cluster via Open OnDemand (OOD) Jupyter environment.
-
 Used job scheduler for multi-node, multi-GPU training.
-
 Frameworks: PyTorch, Dask, Albumentations, Ultralytics YOLOv8, OpenCV, Matplotlib.
 
 3. Model Architecture
 Task	Model	Description
 Classification	Custom CNN	Two convolutional + two fully-connected layers (ReLU, max-pool, sigmoid)
 Localization	YOLOv8 Nano	Pre-trained detection backbone fine-tuned on RSNA dataset
-4. Parallelization Techniques
+
+5. Parallelization Techniques
 
 CPU DDP: Multi-process gradient synchronization via torch.multiprocessing (2–8 cores).
-
 GPU DDP: Multi-GPU gradient sync using torchrun.
-
 FSDP: Model sharding across 2–3 GPUs for memory efficiency and scalability.
-
 Parallel I/O: DataLoader with multi-workers and Dask partitions to reduce bottlenecks.
 
-⚙️ Performance Highlights
+##⚙️ Performance Highlights
 Configuration	Training Time	Accuracy / mAP	Speedup	Efficiency
 Serial CNN (CPU)	5530 s	87.2 %	1×	1.00
 2-CPU DDP	3273 s	76 %	1.69×	0.84
@@ -78,36 +67,23 @@ Serial CNN (CPU)	5530 s	87.2 %	1×	1.00
 3-GPU FSDP	3308 s	75.6 %	1.99×	0.33
 YOLOv8 (4 GPU Parallel)	5208 s	mAP@0.5 = 0.149	—	—
 
-🧩 Parallelization significantly reduced training time (2× faster), though efficiency dropped beyond 4 CPUs due to synchronization overhead, consistent with Amdahl’s Law.
+##🧩 Parallelization significantly reduced training time (2× faster), though efficiency dropped beyond 4 CPUs due to synchronization overhead, consistent with Amdahl’s Law.
 
-📊 Visualization
-
-Performance graphs and bounding-box visualizations include:
-
-Training time vs. number of processes (2–8 CPUs)
-
-Accuracy and loss curves
-
-YOLOv8 bounding boxes on test images (pneumonia localization)
-
-🧩 HPC Environment Note
+##🧩 HPC Environment Note
 
 Note: These notebooks contain !pip, %%writefile, and other setup commands intentionally.
 They were executed in an HPC cluster environment (Open OnDemand) where environment setup and dependency management were required dynamically.
 These commands ensure reproducibility across cluster nodes and are not errors.
 
 
-🧮 Key Learnings
+##🧮 Key Learnings
 
 Parallelism boosts training efficiency but introduces synchronization overhead.
-
 FSDP provides memory-efficient scaling across multiple GPUs.
-
 YOLOv8 performs well on pneumonia localization, though bounding-box precision still depends on annotation quality.
-
 The HPC framework provides realistic insight into production-grade distributed ML.
 
-🏁 Conclusion
+##🏁 Conclusion
 
 This project successfully integrated High-Performance Computing with Deep Learning for medical imaging.
 By combining parallel data handling, distributed training, and GPU acceleration, it achieved significant performance improvements without loss of model fidelity — demonstrating the feasibility of scalable, AI-driven medical diagnostics in HPC environments.
