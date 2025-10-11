@@ -1,6 +1,6 @@
-#🫁 Lungs Pneumonia Detection and Localization using Deep Learning
+#🫁Lungs Pneumonia Detection and Localization using Deep Learning
 
-##🚀 Project Overview
+##🚀Project Overview
 
 This project applies Deep Learning and High-Performance Computing (HPC) to detect and localize pneumonia in chest X-ray (CXR) images.
 It leverages Convolutional Neural Networks (CNNs) for classification and YOLOv8 for bounding-box localization, trained in both serial and parallel environments using multi-core CPUs and multi-GPU clusters.
