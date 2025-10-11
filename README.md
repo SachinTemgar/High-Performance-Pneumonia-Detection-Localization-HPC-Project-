@@ -1,4 +1,4 @@
-#🫁Lungs Pneumonia Detection and Localization using Deep Learning
+#🫁High-Performance-Pneumonia-Detection-Localization-HPC-Project
 
 ##🚀Project Overview
 
