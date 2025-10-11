@@ -1,4 +1,4 @@
-#🫁High-Performance-Pneumonia-Detection-Localization-HPC-Project
+#High-Performance-Pneumonia-Detection-Localization-HPC-Project
 
 ##🚀Project Overview
 
