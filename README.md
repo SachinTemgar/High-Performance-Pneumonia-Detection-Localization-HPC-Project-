@@ -53,7 +53,7 @@ Our work demonstrates how **parallel computing accelerates AI model training** w
 | 4-CPU DDP                | 3056 s        | 77 %                  | 1.81×   |       0.45 |
 | 2-GPU DDP                | 2848 s        | 75.5 %               | 1.92×   |       0.38 |
 | 3-GPU FSDP               | 3308 s        | 75.6 %               | 1.99×   |       0.33 |
-| YOLOv8 (4 GPU Parallel)  | 5208 s        | mAP@0.5 = 0.149       | —       |          — |
+| YOLOv8 (4 GPU Parallel)  | 5208 s        | -                    | —       |          — |
 
 > Parallelization significantly reduced training time (≈2× faster), though efficiency dropped beyond 4 CPUs due to synchronization overhead — consistent with Amdahl’s Law.
 
